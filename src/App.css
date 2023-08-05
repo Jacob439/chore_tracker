@@ -17,7 +17,7 @@
   color: #61dafb;
 }
 
-.button_finished {
+/* .button_finished {
   background-color: #13aa52;
   border: 1px solid #13aa52;
   border-radius: 4px;
@@ -48,4 +48,69 @@
   .button_finished {
     padding: 10px 30px;
   }
+} */
+
+.button_finished {
+  font-family: sans-serif;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2.8px;
+  background-color: #1b8bf9;
+  padding: 15px 50px;
+  border-radius: 5rem;
+  box-shadow: 1px 2.9px 16px rgba(27, 139, 249, 0.4);
+  transition: 0.6s cubic-bezier(0.01, 1.69, 0.99, 0.94);
+}
+
+.button_finished:hover {
+  box-shadow: 3px 4.9px 16px rgba(27, 139, 249, 0.6);
+  letter-spacing: 5px;
+}
+
+.button_finished--clicked {
+  transition: 0.6s cubic-bezier(0.01, 1.69, 0.99, 0.94);
+  padding: 15px 2px;
+  width: 50px;
+  color: transparent;
+  z-index: -10;
+}
+
+.color {
+  display: block;
+  width: 0;
+  height: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  transition: 0.8s ease;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.expanded {
+  width: 200%;
+  padding-bottom: 200%;
+  height: auto;
+}
+
+.color--blue {
+  background-color: #1b8bf9;
+  transition-delay: 0.25s;
+}
+
+.color--orange {
+  background-color: #FF6C19;
+  transition-delay: 0.5s;
+}
+
+.color--green {
+  background-color: #41FF9F;
+  transition-delay: 0.75s;
+}
+
+.color--white {
+  background-color: #f9f9f9;
+  transition-delay: 1s;
 }
