@@ -1,22 +1,28 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  // TEMP ARRAY:
+  let counter = 0;
+  const kids = ["Jacob", "Hailey", "Ben", "Cora"];
+  let name = kids[counter];
+  // document.getElementById("button_finished").addEventListener("click", function () { console.log("HI"); });
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Welcome to the Chore Tracking Website
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div id="turn_name">
+          <p>
+            It is {`${name}`}'s turn for the dishwasher
+          </p>
+        </div>
+        <button class="button_finished" onClick={() => {
+          name = kids[((counter++) % 4)];
+          console.log(name);
+          document.getElementById("turn_name").innerHTML = "<p>It is " + name + "'s turn for the dishwasher</p>";
+        }}>I finished unloading it!</button>
       </header>
     </div>
   );
