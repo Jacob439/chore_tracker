@@ -12,18 +12,21 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          Welcome to the Chore Tracking Website
+          It is currently
         </p>
         <div id="turn_name">
-          <p>
-            It is {`${name}`}'s turn for the dishwasher
-          </p>
+          <h1>
+            {`${name}`}'s
+          </h1>
         </div>
+        <p>
+          turn to unload the dishwasher
+        </p>
         <button class="button_finished" onClick={() => {
           name = kids[((counter++) % 4)];
           console.log(name);
           confetti();
-          document.getElementById("turn_name").innerHTML = "<p>It is " + name + "'s turn for the dishwasher</p>";
+          document.getElementById("turn_name").innerHTML = "<h1>" + name + "'s";
         }}>I finished unloading it!</button>
       </header>
     </div>
