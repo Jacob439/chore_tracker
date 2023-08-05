@@ -1,5 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
+import confetti from 'canvas-confetti';
 
 function App() {
   // TEMP ARRAY:
@@ -21,6 +22,7 @@ function App() {
         <button class="button_finished" onClick={() => {
           name = kids[((counter++) % 4)];
           console.log(name);
+          confetti();
           document.getElementById("turn_name").innerHTML = "<p>It is " + name + "'s turn for the dishwasher</p>";
         }}>I finished unloading it!</button>
       </header>
