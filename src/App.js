@@ -11,6 +11,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        {/* <p>Testing .env: {process.env.REACT_APP_TESTING_ENV}</p> */}
         <p>
           It is currently
         </p>
@@ -22,7 +23,7 @@ function App() {
         <p>
           turn to unload the dishwasher
         </p>
-        <button class="button_finished" onClick={(e) => {
+        <button className="button_finished" onClick={(e) => {
           const button = document.querySelector('.button_finished');
           e.preventDefault();
           button.classList.add('button_finished--clicked');
@@ -41,10 +42,10 @@ function App() {
           // document.getElementById("turn_name").innerHTML = "<h1>" + name + "'s";
         }}>I finished unloading it!</button>
       </header>
-      <span class="color color--blue" data-value="1"></span>
-      <span class="color color--orange" data-value="1"></span>
-      <span class="color color--green" data-value="1"></span>
-      <span class="color color--white" data-value="1">
+      <span className="color color--blue" data-value="1"></span>
+      <span className="color color--orange" data-value="1"></span>
+      <span className="color color--green" data-value="1"></span>
+      <span className="color color--white" data-value="1">
       </span>
     </div>
   );
