@@ -1,8 +1,7 @@
 .App {
   text-align: center;
-}
 
-.App-header {
+  /*Moved from header*/
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -12,6 +11,10 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+/* .App-header {
+  
+} */
 
 .App-link {
   color: #61dafb;
@@ -113,4 +116,9 @@
 .color--white {
   background-color: #f9f9f9;
   transition-delay: 1s;
+}
+
+.color--back {
+  background-color: #282c34;
+  transition-delay: 1.25s;
 }

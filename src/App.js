@@ -3,15 +3,31 @@ import './App.css';
 import { Routes, Route } from "react-router-dom";
 // import confetti from 'canvas-confetti';
 
+var counter = 0;
+const kids = ["Jacob", "Hailey", "Ben", "Cora"];
+var name = kids[counter];
+
 function App() {
   // TEMP ARRAY:
-  let counter = 0;
-  const kids = ["Jacob", "Hailey", "Ben", "Cora"];
-  let name = kids[counter];
+
   // document.getElementById("button_finished").addEventListener("click", function () { console.log("HI"); });
   return (
     <div className="App">
-      <header className="App-header">
+      <Routes>
+        <Route path="/" element={<MainLayout />} />
+        <Route path="test" element={<Test />} />
+
+      </Routes>
+    </div>
+  );
+}
+
+function MainLayout() {
+
+  return (
+    <div>
+
+      <header className="App-header" id="main-header">
         {/* <p>Testing .env: {process.env.REACT_APP_TESTING_ENV}</p> */}
         <p>
           It is currently
@@ -36,6 +52,10 @@ function App() {
           setTimeout(() => { button.classList.remove("button_finished--clicked") }, 3500);
           // Now insert new page here
           // and REMOVE BELOW LINE
+          // window.location.href = "/test";
+          setTimeout(() => { window.location.href = "/test" }, 3400);
+          // const app_header = document.getElementsByClassName("App-header");
+          setTimeout(() => { document.getElementById("main-header").remove() }, 1000);
           setTimeout(() => { document.querySelectorAll('span').forEach((element) => { element.classList.remove('expanded') }) }, 1700)
           // name = kids[((counter++) % 4)];
           // console.log(name);
@@ -47,17 +67,22 @@ function App() {
       <span className="color color--orange" data-value="1"></span>
       <span className="color color--green" data-value="1"></span>
       <span className="color color--white" data-value="1"></span>
-      <Routes>
-        <Route path="test" element={<Test />} />
-      </Routes>
+      {/* <span className="color color--back" data-value="1"></span> */}
     </div>
   );
 }
 
 function Test() {
   return (
-    <p>Yay, this worked</p>
-  )
+    <div>
+      <button id="submit_name" onClick={(e) => {
+
+      }}>
+        <h2>{`${name}`} just finished unloading the dishwasher!</h2>
+      </button>
+      <p>Not {`${name}`}? Select your name here: </p>
+    </div>
+  );
 }
 
 export default App;
