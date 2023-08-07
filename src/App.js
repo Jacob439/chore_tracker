@@ -48,23 +48,21 @@ function MainLayout() {
           turn to unload the dishwasher
         </p>
         <button className="button_finished" onClick={(e) => {
-          const button = document.querySelector('.button_finished');
+          // const button = document.querySelector('.button_finished');
           e.preventDefault();
-          button.classList.add('button_finished--clicked');
-          document.querySelectorAll('span').forEach((element) => { element.classList.add('expanded') })
+          navigate("/confirm");
+          // button.classList.add('button_finished--clicked');
+          // document.querySelectorAll('span').forEach((element) => { element.classList.add('expanded') })
 
-          setTimeout(() => { button.classList.remove("button_finished--clicked") }, 3500);
+          // setTimeout(() => { button.classList.remove("button_finished--clicked") }, 3500);
 
-          setTimeout(() => { navigate("/confirm") }, 3400);
-          setTimeout(() => { document.getElementById("main-header").remove() }, 1000);
-          setTimeout(() => { document.querySelectorAll('span').forEach((element) => { element.classList.remove('expanded') }) }, 1700)
+          // setTimeout(() => { navigate("/confirm") }, 3400);
+          // setTimeout(() => { document.getElementById("main-header").remove() }, 1000);
+          // setTimeout(() => { document.querySelectorAll('span').forEach((element) => { element.classList.remove('expanded') }) }, 1700)
 
         }}>I finished unloading it!</button>
       </header>
-      <span className="color color--blue" data-value="1"></span>
-      <span className="color color--orange" data-value="1"></span>
-      <span className="color color--green" data-value="1"></span>
-      <span className="color color--white" data-value="1"></span>
+
       {/* <span className="color color--back" data-value="1"></span> */}
     </div>
   );
@@ -74,7 +72,7 @@ function Confirm() {
   const navigate = useNavigate();
   return (
     <div>
-      <button id="submit_name" onClick={(e) => {
+      {/* <button id="submit_name" onClick={(e) => {
         name = kids[((counter++) % 4)];
         console.log(name);
         confetti();
@@ -82,8 +80,31 @@ function Confirm() {
         setTimeout(() => { navigate("/") }, 3000);
       }}>
         <h2>{`${name}`} just finished unloading the dishwasher!</h2>
-      </button>
-      <p>Not {`${name}`}? Select your name here: </p>
+      </button> */}
+      <div id="confirmation">
+        <button className="button_finished" onClick={(e) => {
+          const button = document.querySelector('.button_finished');
+          e.preventDefault();
+          // navigate("/confirm");
+          name = kids[((counter++) % 4)];
+          console.log(name);
+          button.classList.add('button_finished--clicked');
+          document.querySelectorAll('span').forEach((element) => { element.classList.add('expanded') })
+
+          setTimeout(() => { button.classList.remove("button_finished--clicked") }, 3500);
+
+          setTimeout(() => { navigate("/") }, 3400);
+          setTimeout(() => { document.getElementById("confirmation").remove() }, 1000);
+          setTimeout(() => { document.querySelectorAll('span').forEach((element) => { element.classList.remove('expanded') }) }, 1700)
+
+        }}><h2>{`${name}`} just finished unloading the dishwasher!</h2>!</button>
+        <p>Not {`${name}`}? Select your name here: </p>
+      </div>
+      <span className="color color--blue" data-value="1"></span>
+      <span className="color color--orange" data-value="1"></span>
+      <span className="color color--green" data-value="1"></span>
+      <span className="color color--white" data-value="1"></span>
+
     </div>
   );
 }
