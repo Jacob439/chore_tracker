@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
-import { Routes, Route } from "react-router-dom";
-// import confetti from 'canvas-confetti';
+import { Routes, Route, useNavigate } from "react-router-dom";
+import confetti from 'canvas-confetti';
 
 var counter = 0;
 const kids = ["Jacob", "Hailey", "Ben", "Cora"];
@@ -15,14 +15,21 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<MainLayout />} />
-        <Route path="test" element={<Test />} />
+        {/* <Route index element={<MainLayout />} /> */}
+        <Route path="confirm" element={<Confirm />} />
 
       </Routes>
     </div>
   );
 }
+function Test() {
+  return (
+    <div></div>
+  )
+}
 
 function MainLayout() {
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -53,7 +60,9 @@ function MainLayout() {
           // Now insert new page here
           // and REMOVE BELOW LINE
           // window.location.href = "/test";
-          setTimeout(() => { window.location.href = "/test" }, 3400);
+          // setTimeout(() => { window.location.href = "/test" }, 3400);
+          setTimeout(() => { navigate("/confirm") }, 3400);
+          // <Link to="/confirm">confirm</Link>;
           // const app_header = document.getElementsByClassName("App-header");
           setTimeout(() => { document.getElementById("main-header").remove() }, 1000);
           setTimeout(() => { document.querySelectorAll('span').forEach((element) => { element.classList.remove('expanded') }) }, 1700)
@@ -72,11 +81,16 @@ function MainLayout() {
   );
 }
 
-function Test() {
+function Confirm() {
+  const navigate = useNavigate();
   return (
     <div>
       <button id="submit_name" onClick={(e) => {
-
+        name = kids[((counter++) % 4)];
+        console.log(name);
+        confetti();
+        // setTimeout(() => { window.location.href = "/" }, 3000);
+        setTimeout(() => { navigate("/") }, 3000);
       }}>
         <h2>{`${name}`} just finished unloading the dishwasher!</h2>
       </button>
