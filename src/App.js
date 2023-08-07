@@ -1,5 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
+import { Routes, Route } from "react-router-dom";
 // import confetti from 'canvas-confetti';
 
 function App() {
@@ -45,10 +46,18 @@ function App() {
       <span className="color color--blue" data-value="1"></span>
       <span className="color color--orange" data-value="1"></span>
       <span className="color color--green" data-value="1"></span>
-      <span className="color color--white" data-value="1">
-      </span>
+      <span className="color color--white" data-value="1"></span>
+      <Routes>
+        <Route path="test" element={<Test />} />
+      </Routes>
     </div>
   );
+}
+
+function Test() {
+  return (
+    <p>Yay, this worked</p>
+  )
 }
 
 export default App;
