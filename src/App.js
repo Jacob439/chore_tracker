@@ -52,24 +52,13 @@ function MainLayout() {
           e.preventDefault();
           button.classList.add('button_finished--clicked');
           document.querySelectorAll('span').forEach((element) => { element.classList.add('expanded') })
-          /* 
-      ---------------------------------------
-      just to reset without having to refresh..
-       --------------------------------*/
+
           setTimeout(() => { button.classList.remove("button_finished--clicked") }, 3500);
-          // Now insert new page here
-          // and REMOVE BELOW LINE
-          // window.location.href = "/test";
-          // setTimeout(() => { window.location.href = "/test" }, 3400);
+
           setTimeout(() => { navigate("/confirm") }, 3400);
-          // <Link to="/confirm">confirm</Link>;
-          // const app_header = document.getElementsByClassName("App-header");
           setTimeout(() => { document.getElementById("main-header").remove() }, 1000);
           setTimeout(() => { document.querySelectorAll('span').forEach((element) => { element.classList.remove('expanded') }) }, 1700)
-          // name = kids[((counter++) % 4)];
-          // console.log(name);
-          // confetti();
-          // document.getElementById("turn_name").innerHTML = "<h1>" + name + "'s";
+
         }}>I finished unloading it!</button>
       </header>
       <span className="color color--blue" data-value="1"></span>
