@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import { Routes, Route, useNavigate } from "react-router-dom";
-import confetti from 'canvas-confetti';
+// import confetti from 'canvas-confetti';
 
 var counter = 0;
 const kids = ["Jacob", "Hailey", "Ben", "Cora"];
@@ -50,6 +50,7 @@ function MainLayout() {
 
 function Confirm() {
   const navigate = useNavigate();
+
   return (
     <div>
       <div id="confirmation">
@@ -67,7 +68,10 @@ function Confirm() {
           setTimeout(() => { document.querySelectorAll('span').forEach((element) => { element.classList.remove('expanded') }) }, 1700)
 
         }}><h2>{`${name}`} just finished unloading the dishwasher!</h2></button>
-        <p>Not {`${name}`}? Select your name here: </p>
+        <p>Not {`${name}`}? Select your name here: <select name="name-list" id="name-list">
+          {kids.map((kid) => kid == name ? null : <option value={kid}>{kid}</option>)}
+        </select>
+        </p>
       </div>
       <span className="color color--blue" data-value="1"></span>
       <span className="color color--orange" data-value="1"></span>
