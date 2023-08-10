@@ -74,7 +74,8 @@
 .button_finished--clicked {
   transition: 0.6s cubic-bezier(0.01, 1.69, 0.99, 0.94);
   padding: 15px 2px;
-  width: 50px;
+  width: auto;
+  height: auto;
   color: transparent;
   z-index: -10;
 }

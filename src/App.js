@@ -19,11 +19,6 @@ function App() {
     </div>
   );
 }
-function Test() {
-  return (
-    <div></div>
-  )
-}
 
 function MainLayout() {
   const navigate = useNavigate();
@@ -71,7 +66,7 @@ function Confirm() {
           setTimeout(() => { document.getElementById("confirmation").remove() }, 1000);
           setTimeout(() => { document.querySelectorAll('span').forEach((element) => { element.classList.remove('expanded') }) }, 1700)
 
-        }}><h2>{`${name}`} just finished unloading the dishwasher!</h2>!</button>
+        }}><h2>{`${name}`} just finished unloading the dishwasher!</h2></button>
         <p>Not {`${name}`}? Select your name here: </p>
       </div>
       <span className="color color--blue" data-value="1"></span>
