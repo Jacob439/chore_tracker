@@ -54,7 +54,7 @@ function Confirm() {
   return (
     <div>
       <div id="confirmation">
-        <button className="button_finished" onClick={(e) => {
+        <button className="button_finished" id="button_finished" onClick={(e) => {
           const button = document.querySelector('.button_finished');
           e.preventDefault();
           name = kids[((counter++) % 4)];
@@ -71,15 +71,18 @@ function Confirm() {
         <p>Not {`${name}`}? Select your name here: <select name="name-list" id="name-list" onChange={(e) => {
           console.log(e.target.value);
           name = e.target.value;
+          let mainButton = document.getElementById("button_finished");
           for (let i = 0; i < kids.length; i++) {
             if (name == kids[i]) {
-              counter = i;
+              counter = (i + 1) % 4;
               console.log("COUNTER: " + counter);
               break;
             }
           }
+
+          mainButton.innerHTML = "<h2>" + name + " just finished unloading the dishwasher!</h2>";
         }}>
-          {kids.map((kid) => kid == name ? null : <option key={kid} value={kid}>{kid}</option>)}
+          {kids.map((kid) => kid == name ? <option key={kid} value={kid} selected>{kid}</option> : <option key={kid} value={kid}>{kid}</option>)}
         </select>
         </p>
       </div>
