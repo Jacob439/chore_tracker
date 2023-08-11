@@ -68,8 +68,18 @@ function Confirm() {
           setTimeout(() => { document.querySelectorAll('span').forEach((element) => { element.classList.remove('expanded') }) }, 1700)
 
         }}><h2>{`${name}`} just finished unloading the dishwasher!</h2></button>
-        <p>Not {`${name}`}? Select your name here: <select name="name-list" id="name-list">
-          {kids.map((kid) => kid == name ? null : <option value={kid}>{kid}</option>)}
+        <p>Not {`${name}`}? Select your name here: <select name="name-list" id="name-list" onChange={(e) => {
+          console.log(e.target.value);
+          name = e.target.value;
+          for (let i = 0; i < kids.length; i++) {
+            if (name == kids[i]) {
+              counter = i;
+              console.log("COUNTER: " + counter);
+              break;
+            }
+          }
+        }}>
+          {kids.map((kid) => kid == name ? null : <option key={kid} value={kid}>{kid}</option>)}
         </select>
         </p>
       </div>
