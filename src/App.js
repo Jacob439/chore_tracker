@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Link, Routes, Route, useNavigate } from "react-router-dom";
 
 var counter = 0;
 const kids = ["Jacob", "Hailey", "Ben", "Cora"];
@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainLayout />} />
         <Route path="confirm" element={<Confirm />} />
-
+        <Route path="history" element={<History />} />
       </Routes>
     </div>
   );
@@ -51,6 +51,9 @@ function MainLayout() {
           e.preventDefault();
           navigate("/confirm");
         }}>I finished unloading it!</button>
+        <br></br><br></br>
+        <Link to="history">View History</Link>
+        {/* <a href="http://192.168.0.128:3002/api/v2/dishwasher_turns" id="history-link">View History</a> */}
       </header>
     </div>
   );
@@ -118,4 +121,31 @@ function Confirm() {
   );
 }
 
+function History() {
+  // Create a 2d array in js then use map to make that a li
+  fetch('http://192.168.0.128:3002/api/v2/dishwasher_turns', {
+    method: 'GET'
+  })
+    .then(response => response.json())
+    .then(data => {
+      const mylist = document.getElementById("mylist");
+      for (let i = 0; i < data.length; i++) {
+        let node = document.createElement("li");
+        node.appendChild(document.createTextNode(data[i].name + " on " + data[i].created_at + "\n"));
+        mylist.appendChild(node);
+      }
+      // document.getElementById("mylist").appendChild(node);
+    })
+    .catch(error => {
+      console.log("Error: " + error);
+    });
+
+  return (
+    <div>
+      <ol id="mylist">
+
+      </ol>
+    </div>
+  )
+}
 export default App;
