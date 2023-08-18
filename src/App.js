@@ -18,6 +18,22 @@ function App() {
 
 function MainLayout() {
   const navigate = useNavigate();
+  fetch('http://192.168.0.128:3002/api/v2/dishwasher_turns', {
+    method: 'GET'
+  })
+    .then(response => response.json())
+    .then(data => {
+      for (let i = 0; i < kids.length; i++) {
+        if (data[data.length - 1].name == kids[i]) {
+          counter = (i + 1) % 4;
+          document.getElementById("turn_name").innerHTML = "<h1>" + kids[counter] + "'s</h1>";
+          break;
+        }
+      }
+    })
+    .catch(error => {
+      console.log("Error: " + error);
+    });
 
   return (
     <div>
@@ -26,9 +42,7 @@ function MainLayout() {
           It is currently
         </p>
         <div id="turn_name">
-          <h1>
-            {`${kids[counter]}`}'s
-          </h1>
+          <h1> waiting... </h1>
         </div>
         <p>
           turn to unload the dishwasher
@@ -51,6 +65,20 @@ function Confirm() {
         <button className="button_finished" id="button_finished" onClick={(e) => {
           const button = document.querySelector('.button_finished');
           e.preventDefault();
+          fetch('http://192.168.0.128:3002/api/v2/dishwasher_turns', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              "dishwasher_turn": {
+                "name": kids[counter],
+                "inorder": true
+              }
+
+            })
+          });
           counter = (counter + 1) % 4;
           button.classList.add('button_finished--clicked');
           document.querySelectorAll('span').forEach((element) => { element.classList.add('expanded') })
