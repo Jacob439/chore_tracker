@@ -58,6 +58,8 @@ function MainLayout() {
 
 function Confirm() {
   const navigate = useNavigate();
+  var inorder = true;
+  var tempCount = counter;
 
   return (
     <div>
@@ -74,7 +76,7 @@ function Confirm() {
             body: JSON.stringify({
               "dishwasher_turn": {
                 "name": kids[counter],
-                "inorder": true
+                "inorder": inorder
               }
 
             })
@@ -92,6 +94,11 @@ function Confirm() {
         <p>Not {`${kids[counter]}`}? Select your name here: <select name="name-list" id="name-list" onChange={(e) => {
           for (let i = 0; i < kids.length; i++) {
             if (e.target.value == kids[i]) {
+              if (tempCount != i) {
+                inorder = false;
+              } else {
+                inorder = true;
+              }
               counter = i;
               break;
             }
