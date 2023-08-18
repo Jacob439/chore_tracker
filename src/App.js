@@ -123,28 +123,29 @@ function Confirm() {
 
 function History() {
   // Create a 2d array in js then use map to make that a li
+  var table = document.createElement('table');
   fetch('http://192.168.0.128:3002/api/v2/dishwasher_turns', {
     method: 'GET'
   })
     .then(response => response.json())
     .then(data => {
-      const mylist = document.getElementById("mylist");
-      for (let i = 0; i < data.length; i++) {
-        let node = document.createElement("li");
-        node.appendChild(document.createTextNode(data[i].name + " on " + data[i].created_at + "\n"));
-        mylist.appendChild(node);
+      // const mylist = document.getElementById("mylist");
+      var j = 0;
+      for (let i = data.length - 1; i >= 0; i--) {
+        var row = table.insertRow(j);
+        row.insertCell(0).innerHTML = data[i].name;
+        let d = new Date(data[i].created_at);
+        row.insertCell(1).innerHTML = d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear() + " at " + (d.getHours() > 11 ? d.getHours() % 12 + 1 : d.getHours() % 12) + ":" + d.getMinutes() + (d.getHours() > 11 ? " PM" : " AM");
+        j++;
       }
-      // document.getElementById("mylist").appendChild(node);
+      document.getElementById("history").appendChild(table);
     })
     .catch(error => {
       console.log("Error: " + error);
     });
 
   return (
-    <div>
-      <ol id="mylist">
-
-      </ol>
+    <div id="history">
     </div>
   )
 }
